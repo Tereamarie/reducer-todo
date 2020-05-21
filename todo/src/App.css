@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url("https://cdn.pixabay.com/photo/2015/09/09/23/13/vintage-933793__480.jpg");
+  height: 100vh;
+  background-size: cover;
 }
 
 .App-logo {
@@ -14,19 +17,26 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+.App-header h1 {
+  font-size: 2.5rem;
+  background: -webkit-linear-gradient(
+    rgb(25, 182, 255),
+    rgb(39, 39, 39),
+    rgb(25, 182, 255)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .App-link {
   color: #61dafb;
 }
+
+
+
 
 @keyframes App-logo-spin {
   from {
