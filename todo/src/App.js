@@ -1,20 +1,25 @@
-import React, { useReducer } from 'react';
-import { reducer, initialState } from './reducers/reducer';
-import TodoList from './components/TodoList';
-import TodoForm from './components/TodoForm';
-import "./App.css"
+import React, { useReducer } from "react";
+import "./App.css";
+import { reducer, initialState } from "./reducers/itemReducer";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state, "app state");
-
+  const [todoState, dispatch] = useReducer(reducer, initialState);
+  const addTodo = newTodo => {
+    dispatch({ type: "ADD_TODO", payload: newTodo });
+  };
+  const toggleCompleted = id => {
+    dispatch({ type: "TOGGLE_COMPLETED", payload: id });
+  };
+  const clearCompleted = () => {
+    dispatch({ type: "CLEAR_COMPLETED" });
+  };
   return (
     <div className="App">
-      <div className="App-header">
-        <h1> My Todo List App</h1>
-        <TodoForm dispatch={dispatch} todos={state}/>
-      </div>
-      <TodoList todos={state} dispatch={dispatch} />
+      <h1>ToDo List</h1>
+      <TodoList todoState={todoState} toggleCompleted={toggleCompleted} />
+      <TodoForm addTodo={addTodo} clearCompleted={clearCompleted} />
     </div>
   );
 }
